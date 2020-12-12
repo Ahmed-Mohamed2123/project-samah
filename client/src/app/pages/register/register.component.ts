@@ -1,7 +1,6 @@
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import {User} from 'src/app/models/user';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,6 +11,9 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   signUp: FormGroup = new FormGroup({});
+
+  // spinner
+  show: boolean = false;
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,
@@ -41,6 +43,7 @@ export class RegisterComponent implements OnInit {
       password: this.password
     };
 
+    this.show = true;
     this.authService.signup(this.signUp.value)
       .subscribe(() => {
         this.authService.login(emailLogin)
@@ -49,11 +52,14 @@ export class RegisterComponent implements OnInit {
             localStorage.setItem('token', accessToken);
             localStorage.setItem('name', data.name);
             this.router.navigate(['/home']);
+            this.show = false;
           }, err => {
             console.log(err);
+            this.show = false;
           });
       }, error => {
         console.log(error);
+        this.show = false;
       });
   }
 

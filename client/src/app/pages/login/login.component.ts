@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
 
   loginDto: FormGroup = new FormGroup({});
 
+  show: boolean = false;
+
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router: Router) { }
@@ -25,14 +27,17 @@ export class LoginComponent implements OnInit {
   }
 
   login(): any {
+    this.show = true;
     this.authService.login(this.loginDto.value)
       .subscribe((data: {accessToken: string, name: string}) => {
         const accessToken = data.accessToken;
         localStorage.setItem('token', accessToken);
         localStorage.setItem('name', data.name);
         this.router.navigate(['/home']);
+        this.show = false;
       }, error => {
         console.log(error);
+        this.show = false;
       });
   }
 

@@ -11,6 +11,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
+import { SpinnerComponent } from './pages/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
     HomeComponent,
     FooterComponent,
     NavbarComponent,
+    SpinnerComponent,
 
   ],
   imports: [
