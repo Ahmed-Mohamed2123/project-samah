@@ -1,0 +1,9 @@
+<div class="parent">
+  <div class="content">
+    <a *ngIf="!authService.isLoggedIn()" routerLink="/login">Login</a>
+    <a *ngIf="!authService.isLoggedIn()" routerLink="/signup">Sign Up</a>
+    <button (click)="logout()" *ngIf="authService.isLoggedIn()" class="btn btn-danger">Logout</button>
+    <p style="margin-bottom: 0;
+    margin-left: 13px;" *ngIf="authService.isLoggedIn()">{{username}}</p>
+  </div>
+</div>

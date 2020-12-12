@@ -1,0 +1,29 @@
+.parent-login {
+  height: 100vh;
+}
+
+.parent-login .login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  background-color: #FFF;
+  border-radius: 12px;
+  border: none;
+}
+
+@media (max-width: 635px) {
+  .parent-login .login {
+    width: 95% !important;
+  }
+}
+
+.content-alert {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.content-alert .alert {
+  width: fit-content;
+}

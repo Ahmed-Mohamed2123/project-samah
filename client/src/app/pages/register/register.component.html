@@ -1,0 +1,34 @@
+<div class="parent-signup" style="position: relative;">
+  <div class="signup">
+    <form [formGroup]="signUp" (ngSubmit)="signupUser()" class="text-center border border-light p-5">
+
+      <p class="h4 mb-4">Sign Up</p>
+
+      <!-- Name -->
+      <input type="text" class="form-control mb-4" placeholder="Name" formControlName="name" name="name" required>
+
+      <!-- Email -->
+      <input type="email" class="form-control mb-4" placeholder="E-mail" formControlName="email" name="email" required>
+
+      <!-- Password -->
+      <input type="password" class="form-control mb-4" placeholder="Password" formControlName="password" name="password" required>
+
+      <!-- specialize -->
+      <input type="text" class="form-control mb-4" placeholder="specialize" formControlName="specialize" name="specialize" required>
+
+      <!-- Button Submit -->
+      <button [disabled]="signUp.invalid" class="btn btn-info btn-block my-4" type="submit">Sign Up</button>
+
+
+    </form>
+  </div>
+</div>
+
+<!--  -->
+<div class="content-alert">
+  <div class="alert alert-danger" *ngIf="signUp.get('password')?.touched && !signUp.get('password')?.valid">
+    <div *ngIf="signUp.get('password')?.errors?.required">Primary password is required</div>
+    <div *ngIf="signUp.get('password')?.errors?.minlength">you have to enter at least 6 digit!</div>
+  </div>
+</div>
+<!--  -->
